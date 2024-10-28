@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="{% url 'homePage' %}"><i class="fas fa-home"></i> Home</a>
+    
+    <a href=" {% url 'joobFeed' %}"><i class="fas fa-file"></i> View job</a>
+    <a href=" {% url 'profilePage' %}"><i class="fas fa-user"></i> Profile</a>
+    
+    <a href=" {% url 'logoutPage' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    {% if request.user.user_type == "recruiter" %}
+    
+    <p>Only for Admin </p>
+    <a href="{% url 'addjob' %} "><i class="fas fa-add"></i> Add Job</a>
+    
+    <a href="{% url 'createdjob' %} "><i class="fas fa-file"></i> Created Job</a>
+    
+        
+    {% endif %}
+   
+    
+    <a href="{% url 'profileEdit' %}"><i class="fas fa-cog"></i> Edit Profile</a>
+</div>

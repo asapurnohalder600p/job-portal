@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block body %}
+<h3>Using CSS to style an HTML Form</h3>
+
+<div>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>You Have Sceached for {{job.job_title}}</h1>
+
+    <label for="fname">Resume </label>
+    <input type="file" id="fname" name="Resume" >
+    <br><br>
+
+    <label for="lname">Skill </label>
+    <select id="country" name="Skill">
+        <option value="">Select skill</option>
+        <option value="python">PYTHON</option>
+        <option value="java">JAVA</option>
+        <option value="graphic">GRAPHIC</option>
+        <option value="marketing">MERKETING</option>
+      </select>
+  
+
+
+    <label for="lname">Cover </label>
+    <br>
+    <textarea name="Cover" id="" rows="5" cols="100"></textarea>
+    <br><br>
+
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock body %}
