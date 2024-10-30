@@ -54,10 +54,18 @@ def logoutPage(req):
 #homePage
 @login_required
 def homePage(req):
-
-
     
-    return render(req,'homePage.html')
+    total_jobs = JobModel.objects.all().count()
+    total_users = Custom_User_Model.objects.all().count()
+    total_applications = jobApplyModel.objects.all().count()
+
+    context = {
+        'total_jobs': total_jobs,
+        'total_users': total_users,
+        'total_applications': total_applications,
+    }
+
+    return render(req,'homePage.html',context)
 
 
 #profilePage
@@ -76,11 +84,15 @@ def profileEdit(req):
         user.email=req.POST.get('email')
         user.first_name=req.POST.get('first_name')
         user.last_name=req.POST.get('last_name')
+        
+        user.Skill=req.POST.get('Skill')
         user.Profile_Pic=req.FILES.get('Profile_Pic')
         user.save()
         
         return redirect('profilePage')
-    
+    context={
+        'skill_list':user.Skill
+    }
     
     return render(req,'profileEdit.html')
 #Add form
@@ -198,7 +210,7 @@ def applyjob(req,id):
 
 def applyedjob(req):
     user=req.user
-    job=jobApplyModel.objects.filter(user=user)
+    job=JobModel.objects.filter(user=user)
     context={
         'job':job
     }

@@ -2,73 +2,127 @@
 
 {% block body %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Created Jobs</title>
+    <style>
+      .body2 {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
 
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 auto; /* Center the table */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+            background-color: white; /* Set background color for table */
+        }
 
-#customers tr:hover {background-color: #ddd;}
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 12px; /* Increased padding for better spacing */
+        }
 
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
+        #customers tr:nth-child(even) {
+            background-color: #f9f9f9; /* Lighter background for even rows */
+        }
+
+        #customers tr:hover {
+            background-color: #f1f1f1; /* Subtle hover effect */
+        }
+
+        #customers th {
+            padding: 12px;
+            text-align: left;
+            background-color: #04AA6D; /* Header background color */
+            color: white;
+        }
+
+        #customers img {
+            border-radius: 50%; /* Optional: make images circular */
+        }
+
+        #customers a {
+            text-decoration: none; /* Remove underline from links */
+            color: #04AA6D; /* Link color */
+            margin: 0 5px; /* Space between links */
+            padding: 4px 8px; /* Padding around links */
+            border-radius: 5px; /* Rounded corners for links */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        #customers a:hover {
+            background-color: red; /* Background color on hover */
+        }
+
+        @media (max-width: 768px) {
+            #customers {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+        }
+
+        .button {
+          display: inline-block; /* Make it inline-block for spacing */
+          padding: 10px 15px; /* Padding for size */
+          font-size: 16px; /* Font size */
+          font-weight: bold; /* Bold text */
+          color: white; /* Text color */
+          background-color: blue; /* Background color */
+          border: none; /* No border */
+          border-radius: 5px; /* Rounded corners */
+          text-decoration: none; /* Remove underline */
+          transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+      }
+      
+      .button:hover {
+          background-color: #038b56; /* Darker shade on hover */
+          transform: translateY(-2px); /* Slight lift effect */
+      }
+      
+    </style>
 </head>
-<body>
+<body class='body2'>
 
 <h1>Created Job</h1>
 
 <table id="customers">
-  <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Opening</th>
-    <th>Category</th>
-    <th>Skill</th>
-    <th>Action</th>
-    
-  
-  </tr>
-  {% for i in jobs %}
-  <tr>
-    <td><img src="/{{i.Job_Image}}" height="100" width="100"></td>
-    <td>{{i.job_title}}</td>
-    <td>{{i.Openings}}</td>
-    <td>{{i.Category}}</td>
-    <td>{{i.Skill}}</td>
-    <td>
-        <a href="{% url 'deletePage' i.id %}">Delete</a>
-        <a href="{% url 'editpage' i.id %}">Edit</a>
-        <a href="{% url 'viewPage' i.id %}">View</a>
-    </td>
-  </tr>
-        
-  {% endfor %}
+    <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Opening</th>
+        <th>Category</th>
+        <th>Skill</th>
+        <th>Action</th>
+    </tr>
+    {% for i in jobs %}
+    <tr>
+        <td><img src="/{{ i.Job_Image }}" height="100" width="100"></td>
+        <td>{{ i.job_title }}</td>
+        <td>{{ i.Openings }}</td>
+        <td>{{ i.Category }}</td>
+        <td>{{ i.Skill }}</td>
+        <td>
+          <a class="button" href="{% url 'deletePage' i.id %}">Delete</a>
+          <a class="button" href="{% url 'editpage' i.id %}">Edit</a>
+          <a class="button" href="{% url 'viewPage' i.id %}">View</a>
+      </td>
       
-  
-
+    </tr>
+    {% endfor %}
 </table>
 
 </body>
 </html>
-
-
-
-    
 {% endblock body %}
-    

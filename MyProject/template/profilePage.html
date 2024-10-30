@@ -6,10 +6,11 @@
         <h1>Profile Page</h1>
         <img src="/{{request.user.Profile_Pic}}" alt="Profile Picture" class="profile-pic">
         <h3>Username: {{request.user.username}}</h3>
-        <h3>Skill: {{request.user.Skill}}</h3>
+        
         <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
         
         {% if request.user.user_type == "seeker" %}
+        <h3>Skill: {{request.user.Skill | title}}</h3>
         <button><a href="{% url 'applyedjob' %}">Appled job</a></button>
         <button><a href="{% url 'skillmachingPage' %}">Skill Maching</a></button>
             
@@ -19,7 +20,7 @@
     <section class="contact">
         <h3>Contact Information</h3>
         <p>Email: <a href="mailto:{{request.user.email}}">{{request.user.email}}</a></p>
-        <p>Phone: [Your Phone Number]</p>
+        <p>Phone: 01744455646</p>
         <p>Follow me: <a href="[Your Instagram Link]">Instagram</a>, <a href="[Your Facebook Link]">Facebook</a></p>
     </section>
 </div>

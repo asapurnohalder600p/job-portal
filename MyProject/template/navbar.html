@@ -5,7 +5,7 @@
     <a href=" {% url 'joobFeed' %}"><i class="fas fa-file"></i> View job</a>
     <a href=" {% url 'profilePage' %}"><i class="fas fa-user"></i> Profile</a>
     
-    <a href=" {% url 'logoutPage' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+   
     {% if request.user.user_type == "recruiter" %}
     
     <p>Only for Admin </p>
@@ -18,4 +18,5 @@
    
     
     <a href="{% url 'profileEdit' %}"><i class="fas fa-cog"></i> Edit Profile</a>
+    <a href=" {% url 'logoutPage' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
